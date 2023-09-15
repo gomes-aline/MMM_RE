@@ -77,7 +77,8 @@ V("Firm_Planned_Production");
 V("Firm_Energy_Demand");                        
 
 /*****EFFECTIVE PRODUCTION AND INPUT DEMAND*****/
-V("Firm_Available_Inputs_Ratio");                       	
+V("Firm_Available_Inputs_Ratio"); 
+V("Firm_Available_Energy_Ratio");                      	
 V("Capital_Good_Productivity");                        		                                                                     
 V("Firm_Input_Demand_Next_Period");                         
 V("Country_Domestic_Intermediate_Demand");                     		                        		                    		

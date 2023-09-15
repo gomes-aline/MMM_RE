@@ -15,7 +15,6 @@ This variable defines the ratio between available inputs and inputs demanded for
 	v[5]=min(1,v[4]);                                  		//the ratio can never be smaller then 1
 RESULT(v[5])
 
-
 EQUATION("Sector_Propensity_Import_Inputs")
 	v[1]=V("sector_initial_propensity_import_inputs");							//firm propensity to import
 	v[3]=VS(input, "Sector_Avg_Price");                       		//input sector average price
@@ -90,7 +89,20 @@ EQUATION("Firm_Energy_Demand")
 	v[2]=v[1]*v[0];
 RESULT(v[2])
 
-
+EQUATION("Firm_Available_Energy_Ratio")                     //AJUSTAR!
+/*
+This variable defines the ratio between available inputs and inputs demanded for each sector in order to fulfil desired production.
+*/
+	v[0]=V("Firm_Planned_Production");                      
+	v[1]=VL("Firm_Avg_Input_Tech_Coefficient",1);	
+	v[2]=v[0]*v[1];                        					//total amount of imputs to required to fulfil planned production
+	v[3]=VL("Firm_Stock_Inputs",1);                   		//stock of remaining imputs from the last period	
+	if(v[2]>0)                                         		//if required imputs is a positive value
+		v[4]=v[3]/v[2];                                  	//gives the ratio between necessary imputs and available imputs
+	else                                               		//if required imputs is not a positive value
+		v[4]=1;                                          	//the ratio between necessary imputs and available imputs equals 1
+	v[5]=min(1,v[4]);                                  		//the ratio can never be smaller then 1
+RESULT(v[5])
 
 
 

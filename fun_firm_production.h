@@ -6,10 +6,10 @@ Firm's expected sales are calculated from an average of effective sales from the
 	v[1]=VL("Firm_Effective_Orders", 1);                    //firm's effective orders lagged 1
 	v[2]=VL("Firm_Effective_Orders", 2);                    //firm's effective orders lagged 2
 	v[3]=V("sector_expectations");                          //firm expectations
-	v[5]=(v[1]-v[2])/v[2];
-	v[6]=max(min(v[5],1),-1);
+	v[5]=(v[1]-v[2])/v[2];                                  //growth rate of firm's production between lags 2 and 1 
+	v[6]=max(min(v[5],1),-1);                               //?
 	if(v[2]!=0)                                           	//if firm's effective orders lagged 2 is not zero
-		v[4]=v[1]*(1+v[3]*v[6]);              //expected sales will be the effective orders in the last period multiplied by the growth rate between the two periods adjusted by the expectations parameter
+		v[4]=v[1]*(1+v[3]*v[6]);                            //expected sales will be the effective orders in the last period multiplied by the growth rate between the two periods adjusted by the expectations parameter
 	else                                                  	//if firm's effective orders lagged 2 is zero 
 		v[4]=v[1];                                          //expected sales will be equal to effective orders of the last period
 		
@@ -54,6 +54,9 @@ The actual production of each sector will be determined by the constraint impose
 	v[0]=V("Firm_Planned_Production");                                                              //firm's planned production
 	v[1]=V("Firm_Available_Inputs_Ratio");
 	v[2]=v[1]*v[0];                                                                            		//effective planned production, constrained by the ratio of available inputs
+	v[11]=V("Firm_Available_Energy_Ratio");	                                                        //firm's energy available 
+	v[12]=v[11]*v[0];																			    //effective planned production, constrained by the ration of available energy
+	v[13]=min(v[2], v[12]);                                                                         //effective planned production will be the lowest of the two above
 	
 	v[10]=V("switch_capital_order");
 	if(v[10]==0)	
@@ -69,9 +72,9 @@ The actual production of each sector will be determined by the constraint impose
 	{
 		v[4]=VS(cur, "capital_good_productive_capacity");                                          	//capital productivity capacity
 		v[8]=VS(cur, "capital_good_carbon_intensity");
-		v[5]=max(0,(min(v[4], v[2])));                                                             	//maximum capacity of each capital goods, constrained by effective planned production, and it can not be negative
+		v[5]=max(0,(min(v[4], v[13])));                                                             	//maximum capacity of each capital goods, constrained by effective planned production, and it can not be negative
 		WRITES(cur, "Capital_Good_Production", v[5]);                                              	//the capacity of each capital goods is in fact its production
-		v[2]=v[2]-v[5];                                                                            	//it subracts the production of the first capital good from the effective planned production before going to the next capital good
+		v[13]=v[13]-v[5];                                                                            	//it subracts the production of the first capital good from the effective planned production before going to the next capital good
 		v[3]=v[3]+v[5]; 																			//sums up the production of each capital good to determine firm's effective production
 		v[7]=v[7]+v[5]*v[8];
 	}
@@ -84,7 +87,7 @@ EQUATION_DUMMY("Capital_Good_Production", "Firm_Effective_Production")
 
 EQUATION("Firm_Avg_Productivity")
 /*
-Firm's productivity will be an average of each capital good productivity weighted by their repective production	
+Firm's capital productivity will be an average of each capital good productivity weighted by their repective production	
 */
 	v[0]=V("Firm_Effective_Production");                                		//firm's effective production
 	v[1]=VL("Firm_Avg_Productivity", 1);                           				//firm's average productivity in the last period
