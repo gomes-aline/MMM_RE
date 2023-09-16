@@ -1402,7 +1402,7 @@ Var: Firm_Interest_Rate_Long_Term 0 n + n n
 Var: Firm_Interest_Rate_Short_Term 0 n + n n
 Var: Firm_Internal_Finance_Rate 0 n + n n
 Var: Firm_Internal_Funds 0 n + n n
-Var: Firm_Inventories_Variation 0 n + n n
+Var: Firm_Inventories_Variation 0 s + n n
 Var: Firm_Investment_Constraint_Rate 0 n + n n
 Var: Firm_Investment_Period 0 n + n n
 Var: Firm_Investment_Rate 0 n + n n
@@ -1451,8 +1451,8 @@ Var: Firm_Avg_Carbon_Intensity 1 n + n n	0	0	0	0
 Var: Firm_Emissions 0 n + n n
 Var: Firm_Innovation_RND_Share 1 n + n n	0	0	0	0
 Var: Firm_Desired_Market_Share 1 n + n n	0	0	0	0
-Var: Firm_Available_Energy_Ratio 0 n + n n
-Var: Firm_Energy_Cost 0 n + n n
+Var: Firm_Available_Energy_Ratio 0 s + n n
+Var: Firm_Energy_Cost 0 s + n n
 
 Object: CAPITALS C	1	1	1	1
 Param: capital_good_date_birth 0 n + n n	-59	-59	-59	-59
