@@ -105,7 +105,7 @@ RESULT(v[6])
 
 EQUATION("Firm_Avg_Input_Tech_Coefficient")
 /*
-Firm's productivity will be an average of each capital good productivity weighted by their repective production	
+Firm's input tech coefficient will be an average of the value for each capital good weighted by their repective production	
 */        
 v[0]=v[1]=0;
 CYCLE(cur, "CAPITALS")
@@ -128,7 +128,7 @@ RESULT(v[4])
 
 EQUATION("Firm_Avg_Energy_Intensity")
 /*
-Firm's productivity will be an average of each capital good productivity weighted by their repective production	
+Firm's energy intensity will be an average of the value for each capital good weighted by their repective production	
 */
 v[0]=v[1]=0;
 CYCLE(cur, "CAPITALS")
@@ -152,7 +152,7 @@ RESULT(v[4])
 
 EQUATION("Firm_Avg_Carbon_Intensity")
 /*
-Firm's productivity will be an average of each capital good productivity weighted by their repective production	
+Firm's carbon intensity will be an average of the value for each capital good weighted by their repective production	
 */
 v[0]=v[1]=0;
 CYCLE(cur, "CAPITALS")

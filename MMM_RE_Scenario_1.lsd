@@ -438,6 +438,7 @@ Label Root
 				Var: Firm_Innovation_RND_Share
 				Var: Firm_Desired_Market_Share
 				Var: Firm_Available_Energy_Ratio
+				Var: Firm_Energy_Cost
 
 			}
 
@@ -1451,6 +1452,7 @@ Var: Firm_Emissions 0 n + n n
 Var: Firm_Innovation_RND_Share 1 n + n n	0	0	0	0
 Var: Firm_Desired_Market_Share 1 n + n n	0	0	0	0
 Var: Firm_Available_Energy_Ratio 0 n + n n
+Var: Firm_Energy_Cost 0 n + n n
 
 Object: CAPITALS C	1	1	1	1
 Param: capital_good_date_birth 0 n + n n	-59	-59	-59	-59
@@ -4045,6 +4047,10 @@ END_DESCRIPTION
 
 Variable_Firm_Available_Energy_Ratio
 This variable defines the ratio between available inputs and inputs demanded for each sector in order to fulfil desired production.
+END_DESCRIPTION
+
+Variable_Firm_Energy_Cost
+Unitary costs of energy. It's given by the energy price and energy intensity
 END_DESCRIPTION
 
 Object_CAPITALS

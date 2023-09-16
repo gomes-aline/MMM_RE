@@ -1,5 +1,4 @@
 
-
 EQUATION("Firm_Revenue")
 RESULT(V("Firm_Sales")*V("Firm_Price"))
 
@@ -162,4 +161,3 @@ EQUATION_DUMMY("Firm_Liquidity_Rate", "Firm_Net_Profits" )
 EQUATION_DUMMY("Firm_Distributed_Profits", "Firm_Net_Profits" )
 EQUATION_DUMMY("Firm_Retained_Profits", "Firm_Net_Profits")
 EQUATION_DUMMY("Firm_Profit_Rate", "Firm_Net_Profits")
-
