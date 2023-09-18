@@ -35,8 +35,7 @@ V("Country_Annual_CPI_Inflation");
 V("Firm_Competitiveness");                                  
 V("Firm_Market_Share");                          
 V("Firm_Wage");                                      	   	                                  		
-V("Firm_Input_Cost"); 
-V("Firm_Energy_Cost");                                      
+V("Firm_Input_Cost");                                       
 V("Firm_Variable_Cost");                                                             
 V("Firm_Desired_Markup");                                  
 V("Firm_Desired_Price");                                    
@@ -78,8 +77,7 @@ V("Firm_Planned_Production");
 V("Firm_Energy_Demand");                        
 
 /*****EFFECTIVE PRODUCTION AND INPUT DEMAND*****/
-V("Firm_Available_Inputs_Ratio"); 
-V("Firm_Available_Energy_Ratio");                      	
+V("Firm_Available_Inputs_Ratio");                       	
 V("Capital_Good_Productivity");                        		                                                                     
 V("Firm_Input_Demand_Next_Period");                         
 V("Country_Domestic_Intermediate_Demand");                     		                        		                    		
