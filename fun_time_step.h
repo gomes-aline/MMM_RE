@@ -71,7 +71,32 @@ V("Government_Effective_Inputs");
 /*****CAPITAL GOODS DEMAND*****/
 V("Firm_Demand_Capital_Goods");                             
 V("Country_Domestic_Capital_Goods_Demand");                          		                  		
-V("Firm_Effective_Orders_Capital_Goods");              		
+V("Firm_Effective_Orders_Capital_Goods"); 
+
+/*****CONSUMPTION DEMAND AND IMPORTS*****/
+V("Class_Avg_Real_Income");
+V("Class_Avg_Nominal_Income");
+V("Class_Real_Autonomous_Consumption");
+V("Class_Real_Desired_Domestic_Consumption");
+V("Class_Real_Desired_Imported_Consumption");
+V("Class_Real_Desired_Energy_Consumption");
+V("Class_Desired_Expenses");
+V("Class_Interest_Payment");
+V("Class_Debt_Payment");
+V("Class_Financial_Obligations");
+V("Class_Liquidity_Preference");
+V("Class_Retained_Deposits");
+V("Class_Internal_Funds");
+V("Class_Max_Debt_Rate");
+V("Class_Max_Loans");
+V("Class_Demand_Loans");
+V("Class_Effective_Loans");
+V("Class_Funds");
+V("Class_Maximum_Expenses");
+V("Class_Real_Domestic_Consumption_Demand");
+V("Class_Real_Imported_Consumption_Demand");
+V("Class_Real_Energy_Demand");
+V("Country_Domestic_Consumption_Demand");              		
 
 /*****PLANNED PRODUCTION*****/
 V("Firm_Expected_Demand");                                   
@@ -97,7 +122,8 @@ V("Firm_Emissions");
 V("Sector_Emissions");	
 V("Country_Emissions");							
 
-/*****CONSUMPTION DEMAND AND IMPORTS*****/
+/* 
+*****CONSUMPTION DEMAND AND IMPORTS*****
 V("Class_Avg_Real_Income");
 V("Class_Avg_Nominal_Income");
 V("Class_Real_Autonomous_Consumption");
@@ -121,6 +147,7 @@ V("Class_Real_Domestic_Consumption_Demand");
 V("Class_Real_Imported_Consumption_Demand");
 V("Class_Real_Energy_Demand");
 V("Country_Domestic_Consumption_Demand"); 
+*/
 
 /*****EFFECTIVE ORDERS, SALES AND PROFITS*****/
 V("Sector_Effective_Orders");                          		
