@@ -50,7 +50,8 @@ V("Country_Exchange_Rate");
 V("Sector_Real_Exports");   
 
 /*****GOVERNMENT*****/  
-V("Government_Desired_Wages");                                  		                          
+V("Government_Desired_Wages");
+V("Government_Desired_Energy");                                  		                          
 V("Government_Desired_Unemployment_Benefits");                                     
 V("Government_Desired_Investment");   
 V("Government_Desired_Consumption");  
@@ -60,7 +61,8 @@ V("Government_Max_Expenses_Surplus");
 V("Government_Max_Expenses_Ceiling");  
 V("Government_Max_Expenses");  
 V("Government_Effective_Expenses");  
-V("Government_Effective_Wages");  
+V("Government_Effective_Wages");
+V("Government_Effective_Energy");  
 V("Government_Effective_Unemployment_Benefits");  
 V("Government_Effective_Consumption");  
 V("Government_Effective_Investment"); 
