@@ -85,7 +85,8 @@ RESULT(v[10])
 EQUATION("Firm_Energy_Demand")
 /*
 */
-	v[1]=V("Firm_Planned_Production");  
+	//v[1]=V("Firm_Planned_Production");
+	v[1]=V("Firm_Effective_Production");
 	v[0]=VL("Firm_Avg_Energy_Intensity",1);
 	v[2]=v[1]*v[0];
 RESULT(v[2])

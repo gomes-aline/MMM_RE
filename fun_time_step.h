@@ -101,7 +101,7 @@ V("Country_Domestic_Consumption_Demand");
 /*****PLANNED PRODUCTION*****/
 V("Firm_Expected_Demand");                                   
 V("Firm_Planned_Production");      
-V("Firm_Energy_Demand");                        
+//V("Firm_Energy_Demand");                        
 
 /*****EFFECTIVE PRODUCTION AND INPUT DEMAND*****/
 V("Firm_Available_Inputs_Ratio");                       	
@@ -114,7 +114,9 @@ V("Capital_Good_Production");
 V("Firm_Avg_Productivity"); 
 V("Firm_Avg_Input_Tech_Coefficient"); 
 V("Firm_Avg_Energy_Intensity"); 
-V("Firm_Avg_Carbon_Intensity"); 
+V("Firm_Avg_Carbon_Intensity");
+V("Firm_Energy_Demand");
+V("Country_Domestic_Energy_Demand");  
 V("Firm_Capacity_Utilization");	
 V("Sector_Capacity_Utilization");		
 V("Country_Capacity_Utilization");
@@ -122,8 +124,8 @@ V("Firm_Emissions");
 V("Sector_Emissions");	
 V("Country_Emissions");							
 
-/* 
-*****CONSUMPTION DEMAND AND IMPORTS*****
+/*
+******CONSUMPTION DEMAND AND IMPORTS*****
 V("Class_Avg_Real_Income");
 V("Class_Avg_Nominal_Income");
 V("Class_Real_Autonomous_Consumption");
