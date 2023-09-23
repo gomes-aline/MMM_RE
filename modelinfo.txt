@@ -9,8 +9,8 @@ MMM_RE
 #
 595x462+593+257
 869x664+211+92
-MMM_RE_Scenario_1.lsd
-FIRMS
+Scenario_1.lsd
+Root
 1
 0
 0.0
