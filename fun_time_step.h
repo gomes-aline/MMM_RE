@@ -110,17 +110,20 @@ V("Capital_Good_Productivity");
 //V("Country_Domestic_Intermediate_Demand");                     		                        		                    		
 V("Firm_Effective_Production");
 
+V("Firm_Avg_Energy_Intensity"); 
+V("Firm_Energy_Demand");
+V("Country_Domestic_Energy_Demand");  
+
 V("Firm_Input_Demand_Next_Period");                         
 V("Country_Domestic_Intermediate_Demand");  
-   
 V("Sector_Effective_Production");                           
 V("Capital_Good_Production");                        	
 V("Firm_Avg_Productivity"); 
 V("Firm_Avg_Input_Tech_Coefficient"); 
-V("Firm_Avg_Energy_Intensity"); 
+//V("Firm_Avg_Energy_Intensity"); 
 V("Firm_Avg_Carbon_Intensity");
-V("Firm_Energy_Demand");
-V("Country_Domestic_Energy_Demand");  
+//V("Firm_Energy_Demand");
+//V("Country_Domestic_Energy_Demand");  
 V("Firm_Capacity_Utilization");	
 V("Sector_Capacity_Utilization");		
 V("Country_Capacity_Utilization");
