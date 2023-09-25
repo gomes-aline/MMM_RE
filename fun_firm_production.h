@@ -179,3 +179,17 @@ Firm effective production over firm productive capacity
 	v[1]=VL("Firm_Productive_Capacity",1);
 	v[2]= v[1]!=0? v[0]/v[1] : 0;
 RESULT(v[2])
+
+
+/*
+EQUATION("Rewrite_Energy_Firm_Variables")
+
+Rewrite variables of the energy sector/firm.
+/
+	v[1]=V("Energy_Sector_Complete_Demand");                          //Actual energy demand including energy's sector own demand
+	WRITES(energy, "Firm_Expected_Demand",v[1]);
+	WRITES(energy, "Firm_Planned_Production",v[1]);  	
+	WRITES(energy, "Firm_Effective_Production",v[1]);
+	
+RESULT(v[1])
+*/
