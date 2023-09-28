@@ -48,6 +48,75 @@ Programed Production is subjected to a existing capactity restriction, but it is
 RESULT(v[9])
 
 
+EQUATION("Firm_Max_Production_Constrained_By_Capacity")
+/* AJUSTAR!!! firm's maximium production possible constrained by the installed productive capacity 
+*/
+/*	
+	v[0]=v[1]=VL("Firm_Productive_Capacity",1)            //firm's productive capacity last period	
+	if(v[0]>0)                                            //if firm's productive capacity is higher than zero
+		v[2]=v[0];                                        //firm's maximium production constrained by installed productive capacity
+	else                                                  //if firm's productive capacity is zero or negative 
+		v[2]=0;                                           //firm's max production is zero    
+RESULT(v[2])
+*/
+	v[0]=VL("Firm_Avg_Input_Tech_Coefficient",1);         //firm's average input tech coefficient last period
+	v[1]=VL("Firm_Stock_Inputs",1);                   	  //stock of remaining imputs from the last period	
+	if(v[0]>0)                                            //if the input tech coefficient is higher than zero
+		v[2]=v[1]/v[0];                                   //firm's maximium production constrained by available inputs 
+	else                                                  //if the input tech coefficient is zero or negative 
+		v[2]=1000000000;                                  //firm's production is not constrained by this input    
+RESULT(v[2])
+
+
+EQUATION("Firm_Max_Production_Constrained_By_Inputs")
+/* firm's maximium production possible constrained by the amount of inputs available
+*/
+	v[0]=VL("Firm_Avg_Input_Tech_Coefficient",1);         //firm's average input tech coefficient last period
+	v[1]=VL("Firm_Stock_Inputs",1);                   	  //stock of remaining imputs from the last period	
+	if(v[0]>0)                                            //if the input tech coefficient is higher than zero
+		v[2]=v[1]/v[0];                                   //firm's maximium production constrained by available inputs 
+	else                                                  //if the input tech coefficient is zero or negative 
+		v[2]=1000000000;                                  //firm's production is not constrained by this input    
+RESULT(v[2])
+
+
+EQUATION("Firm_Max_Production_Constrained_By_Energy")
+/* AJUSTAR!!! firm's maximium production possible constrained by the amount of inputs available
+*/
+	v[0]=VL("Firm_Avg_Input_Tech_Coefficient",1);         //firm's average input tech coefficient last period
+	v[1]=VL("Firm_Stock_Inputs",1);                   	  //stock of remaining imputs from the last period	
+	if(v[0]>0)                                            //if the input tech coefficient is higher than zero
+		v[2]=v[1]/v[0];                                   //firm's maximium production constrained by available inputs 
+	else                                                  //if the input tech coefficient is zero or negative 
+		v[2]=1000000000;                                  //firm's production is not constrained by this input    
+RESULT(v[2])
+
+
+EQUATION("Firm_Prior_Effective_Production")
+/* Firm's (prior) effective production used to calculate the energy demand at current time.
+*/
+	v[0]=V("Firm_Prior_Planned_Production");
+	v[1]=V("Firm_Max_Production_Constrained_By_Capacity");
+	v[2]=V("Firm_Max_Production_Constrained_By_Inputs");
+	v[3]=V("Firm_Max_Production_Constrained_By_Energy");
+	v[4]=V("id_energy_sector");
+	if(v[4]==1)                                           	//if it is the energy sector
+		{
+		v[5]= min(v[0],v[1]);                               //Firm's (prior) effective production is the lowest between planned production and the max productions constrained by capacity and inputs		
+		v[6]= min(v[2],v[3]);
+		v[7]= min(v[5],v[6]);
+		//v[5]= min(v[0],v[1],v[2],v[3]);                   //Firm's (prior) effective production is the lowest between planned production and the max productions constrained by capacity and inputs		
+		}
+	else                                                   	//if it is not the energy sector
+		{
+		v[5]= min(v[0],v[1]);                               //Firm's (prior) effective production is the lowest between planned production and the max productions constrained by capacity and inputs		
+		v[6]= min(v[2],v[3]);
+		v[7]= min(v[5],v[6]);                               //Firm's (prior) effective production is the lowest between planned production and the max productions constrained by capacity and inputs	
+		//v[5]= min(v[0],v[1],v[2],v[3]);                   //Firm's (prior) effective production is the lowest between planned production and the max productions constrained by capacity and inputs		
+		}
+RESULT(v[5])
+
+
 EQUATION("Firm_Expected_Demand")
 /*
 Firm's expected sales are calculated from an average of effective sales from the two previous periods, applying a expected growth rate. This expected growth rate is obtained from comparing the average of the two previous periods with the average of the two before that, adjusted by an expectation parameter.
@@ -58,9 +127,10 @@ Firm's expected sales are calculated from an average of effective sales from the
 	if(v[1]==1)                                           	//if it is the energy sector
 		v[2]=v[0]+5;                                           
 	else                                                  	//if it is not the energy sector
-		v[2]=v[0];                               
+		v[2]=v[0];                                          //Firm's expected demand is equal to the prior
 		
 RESULT(v[2])
+
 
 EQUATION("Firm_Planned_Production")
 /*
@@ -71,7 +141,7 @@ EQUATION("Firm_Planned_Production")
 	if(v[1]==1)                                           	//if it is the energy sector
 		v[2]=v[0]+10;                                           
 	else                                                  	//if it is not the energy sector
-		v[2]=v[0];                               
+		v[2]=v[0];                                          //Firm's planned production is equal to the prior
 	
 RESULT(v[2])
 

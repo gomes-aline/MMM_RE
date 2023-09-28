@@ -439,6 +439,10 @@ Label Root
 				Var: Firm_Desired_Market_Share
 				Var: Firm_Prior_Expected_Demand
 				Var: Firm_Prior_Planned_Production
+				Var: Firm_Max_Production_Constrained_By_Inputs
+				Var: Firm_Max_Production_Constrained_By_Capacity
+				Var: Firm_Max_Production_Constrained_By_Energy
+				Var: Firm_Prior_Effective_Production
 
 			}
 
@@ -1382,7 +1386,7 @@ Var: Firm_Effective_Market_Share 1 n + n n	0	0	0	0
 Var: Firm_Effective_Markup 0 n + n n
 Var: Firm_Effective_Orders 40 n + n n	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
 Var: Firm_Effective_Orders_Capital_Goods 40 n + n n	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
-Var: Firm_Effective_Production 0 n + n n
+Var: Firm_Effective_Production 0 s + n n
 Var: Firm_Effective_Productive_Capacity_Variation 0 n + n n
 Var: Firm_Expected_Demand 0 s + n n
 Var: Firm_Expected_Sales_Long_Term 0 n + n n
@@ -1416,7 +1420,7 @@ Var: Firm_Net_Revenue 0 n + n n
 Var: Firm_Planned_Production 0 s + n n
 Var: Firm_Price 1 n + n n	1	1	1	1
 Var: Firm_Price_Period 0 n + n n
-Var: Firm_Productive_Capacity 20 n + n n	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+Var: Firm_Productive_Capacity 20 s + n n	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
 Var: Firm_Productive_Capacity_Depreciation 7 n + n n	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
 Var: Firm_Profit_Rate 0 n + n n
 Var: Firm_Profits 0 n + n n
@@ -1428,7 +1432,7 @@ Var: Firm_Retained_Profits 0 n + n n
 Var: Firm_Revenue 1 n + n n	10	10	10	10
 Var: Firm_Sales 1 n + n n	10	10	10	10
 Var: Firm_Stock_Deposits 1 n + n n	0	0	0	0
-Var: Firm_Stock_Inputs 1 n + n n	0	0	0	0
+Var: Firm_Stock_Inputs 1 s + n n	0	0	0	0
 Var: Firm_Stock_Inventories 1 n + n n	1	1	1	1
 Var: Firm_Stock_Loans 1 n + n n	0	0	0	0
 Var: Firm_Stock_Loans_Long_Term 0 n + n n
@@ -1444,7 +1448,7 @@ Var: Firm_Energy_Demand 0 n + n n
 Var: Firm_Imitation_Energy_Intensity 0 n + n n
 Var: Firm_Innovation_Energy_Intensity 0 n + n n
 Var: Firm_Avg_Energy_Intensity 1 n + n n	0	0	0	0
-Var: Firm_Avg_Input_Tech_Coefficient 1 n + n n	0	0	0	0
+Var: Firm_Avg_Input_Tech_Coefficient 1 s + n n	0	0	0	0
 Var: Firm_Frontier_Energy_Intensity 20 n + n n	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
 Var: Firm_Frontier_Input_Tech_Coefficient 20 n + n n	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
 Var: Firm_Avg_Carbon_Intensity 1 n + n n	0	0	0	0
@@ -1453,6 +1457,10 @@ Var: Firm_Innovation_RND_Share 1 n + n n	0	0	0	0
 Var: Firm_Desired_Market_Share 1 n + n n	0	0	0	0
 Var: Firm_Prior_Expected_Demand 0 s + n n
 Var: Firm_Prior_Planned_Production 0 s + n n
+Var: Firm_Max_Production_Constrained_By_Inputs 0 s + n n
+Var: Firm_Max_Production_Constrained_By_Capacity 0 s + n n
+Var: Firm_Max_Production_Constrained_By_Energy 0 s + n n
+Var: Firm_Prior_Effective_Production 0 s + n n
 
 Object: CAPITALS C	1	1	1	1
 Param: capital_good_date_birth 0 n + n n	-59	-59	-59	-59
@@ -4053,6 +4061,22 @@ Variable_Firm_Prior_Planned_Production
 It's calculated from expected sales for the period, considering the proportion of sales that is desired to be kept as inventories and discounting the acumulated stock of inventories in the last period. 
 For the capital goods sector, program production is defined by effective orders.
 Programed Production is subjected to a existing capactity restriction, but it is possible to increase production by incrising extra hours of labor, in any sector.
+END_DESCRIPTION
+
+Variable_Firm_Max_Production_Constrained_By_Inputs
+firm's maximium production possible constrained by the amount of inputs available
+END_DESCRIPTION
+
+Variable_Firm_Max_Production_Constrained_By_Capacity
+AJUSTAR!!! firm's maximium production possible constrained by the installed productive capacity
+END_DESCRIPTION
+
+Variable_Firm_Max_Production_Constrained_By_Energy
+AJUSTAR!!! firm's maximium production possible constrained by the amount of inputs available
+END_DESCRIPTION
+
+Variable_Firm_Prior_Effective_Production
+Firm's (prior) effective production used to calculate the energy demand at current time.
 END_DESCRIPTION
 
 Object_CAPITALS
