@@ -900,3 +900,20 @@ FATAL ERROR
 Message:
 System Signal received: SIGSEGV (Segmentation violation)
 -----
+
+
+====================> NEW TCL SESSION
+
+(09/28/23 15:10:18)
+Command:
+Invalid Tcl variable name
+Message:
+Internal LSD error searching for variable 'nodeId'. If the problem persists, please contact developers
+-----
+
+(09/28/23 15:10:18)
+Command:
+Invalid Tcl variable name
+Message:
+Internal LSD error searching for variable 'nodeLab'. If the problem persists, please contact developers
+-----

@@ -1,5 +1,6 @@
 
-EQUATION("Firm_Expected_Demand")
+EQUATION("Firm_Prior_Expected_Demand")
+//EQUATION("Firm_Expected_Demand")
 /*
 Firm's expected sales are calculated from an average of effective sales from the two previous periods, applying a expected growth rate. This expected growth rate is obtained from comparing the average of the two previous periods with the average of the two before that, adjusted by an expectation parameter.
 */
@@ -13,18 +14,18 @@ Firm's expected sales are calculated from an average of effective sales from the
 	else                                                  	//if firm's effective orders lagged 2 is zero 
 		v[4]=v[1];                                          //expected sales will be equal to effective orders of the last period
 		
-		
 RESULT(max(0,v[4]))
 
 
-EQUATION("Firm_Planned_Production")
+EQUATION("Firm_Prior_Planned_Production")
+//EQUATION("Firm_Planned_Production")
 /*
 It's calculated from expected sales for the period, considering the proportion of sales that is desired to be kept as inventories and discounting the acumulated stock of inventories in the last period. 
 For the capital goods sector, program production is defined by effective orders.
 Programed Production is subjected to a existing capactity restriction, but it is possible to increase production by incrising extra hours of labor, in any sector.
 */
 	v[0]=V("id_capital_goods_sector");                    	//identifies the capital goods sector      
-	v[1]=V("Firm_Expected_Demand");                         //calls the firm's expected sales
+	v[1]=V("Firm_Prior_Expected_Demand");                   //calls the firm's expected sales
 	v[2]=VL("Firm_Productive_Capacity", 1);                 //calls the firm's productive capacity of the last period
 	v[5]=V("sector_desired_inventories_proportion");        //calls the firm's desired inventories ratio as a proportion of sales
 	v[6]=VL("Firm_Stock_Inventories",1);                    //calls the firm's stock of inventories in the last period
@@ -45,6 +46,34 @@ Programed Production is subjected to a existing capactity restriction, but it is
 		}
 	v[9]=max(0, v[8]);                          			//planned production can never be more then the maximum productive capacity and can never be negative
 RESULT(v[9])
+
+
+EQUATION("Firm_Expected_Demand")
+/*
+Firm's expected sales are calculated from an average of effective sales from the two previous periods, applying a expected growth rate. This expected growth rate is obtained from comparing the average of the two previous periods with the average of the two before that, adjusted by an expectation parameter.
+*/
+	v[0]=V("Firm_Prior_Expected_Demand");
+	//v[2]=v[0];
+	v[1]=V("id_energy_sector");
+	if(v[1]==1)                                           	//if it is the energy sector
+		v[2]=v[0]+5;                                           
+	else                                                  	//if it is not the energy sector
+		v[2]=v[0];                               
+		
+RESULT(v[2])
+
+EQUATION("Firm_Planned_Production")
+/*
+*/
+	v[0]=V("Firm_Prior_Planned_Production");
+	//v[2]=v[0];
+	v[1]=V("id_energy_sector");
+	if(v[1]==1)                                           	//if it is the energy sector
+		v[2]=v[0]+10;                                           
+	else                                                  	//if it is not the energy sector
+		v[2]=v[0];                               
+	
+RESULT(v[2])
 
 
 EQUATION("Firm_Effective_Production")
@@ -80,6 +109,31 @@ RESULT(v[3])
 
 EQUATION_DUMMY("Firm_Emissions", "Firm_Effective_Production")
 EQUATION_DUMMY("Capital_Good_Production", "Firm_Effective_Production")
+
+
+EQUATION("Firm_Avg_Energy_Intensity")
+/*
+Firm's productivity will be an average of each capital good productivity weighted by their repective production	
+*/
+v[0]=v[1]=0;
+CYCLE(cur, "CAPITALS")
+{             
+	v[2]=VS(cur,"capital_good_energy_intensity");
+	if(v[2]!=0)
+		{
+		v[0]=v[0]+v[2];
+		v[1]=v[1]+1;
+		}
+	else
+		{
+		v[0]=v[0];
+		v[1]=v[1];
+		}
+}
+v[3]=VL("Firm_Avg_Energy_Intensity",1);
+v[4]=v[1]!=0? v[0]/v[1]: v[3];
+RESULT(v[4])
+
 
 
 EQUATION("Firm_Avg_Productivity")
@@ -123,28 +177,7 @@ v[3]=VL("Firm_Avg_Input_Tech_Coefficient",1);
 v[4]=v[1]!=0? v[0]/v[1]: v[3];
 RESULT(v[4])
 
-EQUATION("Firm_Avg_Energy_Intensity")
-/*
-Firm's productivity will be an average of each capital good productivity weighted by their repective production	
-*/
-v[0]=v[1]=0;
-CYCLE(cur, "CAPITALS")
-{             
-	v[2]=VS(cur,"capital_good_energy_intensity");
-	if(v[2]!=0)
-		{
-		v[0]=v[0]+v[2];
-		v[1]=v[1]+1;
-		}
-	else
-		{
-		v[0]=v[0];
-		v[1]=v[1];
-		}
-}
-v[3]=VL("Firm_Avg_Energy_Intensity",1);
-v[4]=v[1]!=0? v[0]/v[1]: v[3];
-RESULT(v[4])
+
 
 
 EQUATION("Firm_Avg_Carbon_Intensity")
@@ -181,15 +214,3 @@ Firm effective production over firm productive capacity
 RESULT(v[2])
 
 
-/*
-EQUATION("Rewrite_Energy_Firm_Variables")
-
-Rewrite variables of the energy sector/firm.
-/
-	v[1]=V("Energy_Sector_Complete_Demand");                          //Actual energy demand including energy's sector own demand
-	WRITES(energy, "Firm_Expected_Demand",v[1]);
-	WRITES(energy, "Firm_Planned_Production",v[1]);  	
-	WRITES(energy, "Firm_Effective_Production",v[1]);
-	
-RESULT(v[1])
-*/

@@ -98,6 +98,17 @@ V("Class_Real_Imported_Consumption_Demand");
 V("Class_Real_Energy_Demand");
 V("Country_Domestic_Consumption_Demand");              		
 
+/*****PRIOR CALCULATIONS*****/
+V("Firm_Prior_Expected_Demand");                                   
+V("Firm_Prior_Planned_Production"); 
+//V("Prior_Firm_Available_Inputs_Ratio");                       	
+//V("Capital_Good_Productivity"); 
+//V("Prior_Firm_Effective_Production");
+//V("Prior_Firm_Avg_Energy_Intensity"); 
+//V("Prior_Firm_Energy_Demand");
+//V("Prior_Country_Domestic_Energy_Demand"); 
+
+
 /*****PLANNED PRODUCTION*****/
 V("Firm_Expected_Demand");                                   
 V("Firm_Planned_Production");      
@@ -106,24 +117,17 @@ V("Firm_Planned_Production");
 /*****EFFECTIVE PRODUCTION AND INPUT DEMAND*****/
 V("Firm_Available_Inputs_Ratio");                       	
 V("Capital_Good_Productivity");                        		                                                                     
-//V("Firm_Input_Demand_Next_Period");                         
-//V("Country_Domestic_Intermediate_Demand");                     		                        		                    		
-V("Firm_Effective_Production");
-
-V("Firm_Avg_Energy_Intensity"); 
-V("Firm_Energy_Demand");
-V("Country_Domestic_Energy_Demand");  
-
 V("Firm_Input_Demand_Next_Period");                         
-V("Country_Domestic_Intermediate_Demand");  
+V("Country_Domestic_Intermediate_Demand");                     		                        		                    		
+V("Firm_Effective_Production");
 V("Sector_Effective_Production");                           
 V("Capital_Good_Production");                        	
 V("Firm_Avg_Productivity"); 
 V("Firm_Avg_Input_Tech_Coefficient"); 
-//V("Firm_Avg_Energy_Intensity"); 
+V("Firm_Avg_Energy_Intensity"); 
 V("Firm_Avg_Carbon_Intensity");
-//V("Firm_Energy_Demand");
-//V("Country_Domestic_Energy_Demand");  
+V("Firm_Energy_Demand");
+V("Country_Domestic_Energy_Demand");  
 V("Firm_Capacity_Utilization");	
 V("Sector_Capacity_Utilization");		
 V("Country_Capacity_Utilization");

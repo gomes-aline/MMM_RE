@@ -82,6 +82,7 @@ The stock of inputs of each firm at the end of the period is calculated by summi
 	v[10]=max(v[9],0);                                    //the current stock can never be negative
 RESULT(v[10])
 
+
 EQUATION("Firm_Energy_Demand")
 /*
 */
@@ -90,8 +91,6 @@ EQUATION("Firm_Energy_Demand")
 	v[0]=VL("Firm_Avg_Energy_Intensity",1);
 	v[2]=v[1]*v[0];
 RESULT(v[2])
-
-
 
 
 
