@@ -51,6 +51,23 @@ Both sector average price and external price must be calculated before.
 RESULT(v[7])
 
 
+EQUATION("Energy_Demand_Before_Energy_Sector")
+/* Sum of energy demand before energy sector (government, classes, external sector and firms from other sector)
+*/
+	v[0]=V("Country_Prior_Domestic_Energy_Demand"); 	
+	v[1]=VS(energy,"Sector_Real_Exports");                                                              
+	v[2]=v[0]+v[1]; 
+RESULT(v[2])
+
+EQUATION("Energy_Sector_Own_Demand")
+/* Energy sector's demand of energy, given the energy demand from other sectors and agents
+*/
+	v[0]=V("Energy_Demand_Before_Energy_Sector"); 	
+	v[1]=VLS(energy,"Firm_Avg_Energy_Intensity",1);
+	v[2]=v[1]*v[0];
+RESULT(v[2])
+
+
 EQUATION("Sector_Effective_Orders")
 /*
 Effective orders are determined from total demand for the products in the sector.

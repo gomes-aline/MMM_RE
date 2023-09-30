@@ -588,6 +588,8 @@ Label Root
 			Var: Sector_Energy_Demand
 			Var: Sector_Avg_Energy_Intensity2
 			Param: switch_capital_order
+			Var: Energy_Demand_Before_Energy_Sector
+			Var: Energy_Sector_Own_Demand
 
 		}
 
@@ -1343,6 +1345,8 @@ Var: Sector_Avg_Input_Coefficient 0 s + n n
 Var: Sector_Energy_Demand 0 s + n n
 Var: Sector_Avg_Energy_Intensity2 0 s + n n
 Param: switch_capital_order 0 n + n n	0	0	0	0
+Var: Energy_Demand_Before_Energy_Sector 0 s + n n
+Var: Energy_Sector_Own_Demand 0 s + n n
 
 Object: FIRMS C	1	1	1	1
 Param: firm_bank 0 n + n n	0	0	0	0
@@ -3603,6 +3607,14 @@ Parameter_switch_capital_order
 
 _INIT_
 All 4 instances equal to 0
+END_DESCRIPTION
+
+Variable_Energy_Demand_Before_Energy_Sector
+Sum of energy demand before energy sector (government, classes, external sector and firms from other sector)
+END_DESCRIPTION
+
+Variable_Energy_Sector_Own_Demand
+Energy sector's demand of energy, given the energy demand from other sectors and agents
 END_DESCRIPTION
 
 Object_FIRMS

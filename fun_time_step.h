@@ -106,7 +106,9 @@ V("Firm_Max_Production_Constrained_By_Inputs");
 V("Firm_Max_Production_Constrained_By_Energy"); 
 V("Firm_Prior_Effective_Production"); 
 V("Firm_Prior_Energy_Demand");
-V("Country_Prior_Domestic_Energy_Demand"); 
+V("Country_Prior_Domestic_Energy_Demand");
+V("Energy_Demand_Before_Energy_Sector");
+V("Energy_Sector_Own_Demand");
 
 
 /*****PLANNED PRODUCTION*****/

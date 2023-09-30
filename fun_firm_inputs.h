@@ -92,6 +92,8 @@ EQUATION("Firm_Prior_Energy_Demand")
 RESULT(v[2])
 
 
+
+
 EQUATION("Firm_Energy_Demand")
 /*
 */

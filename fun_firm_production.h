@@ -4,16 +4,21 @@ EQUATION("Firm_Prior_Expected_Demand")
 /*
 Firm's expected sales are calculated from an average of effective sales from the two previous periods, applying a expected growth rate. This expected growth rate is obtained from comparing the average of the two previous periods with the average of the two before that, adjusted by an expectation parameter.
 */
+	v[0]=V("id_energy_sector");
 	v[1]=VL("Firm_Effective_Orders", 1);                    //firm's effective orders lagged 1
 	v[2]=VL("Firm_Effective_Orders", 2);                    //firm's effective orders lagged 2
 	v[3]=V("sector_expectations");                          //firm expectations
 	v[5]=(v[1]-v[2])/v[2];
 	v[6]=max(min(v[5],1),-1);
-	if(v[2]!=0)                                           	//if firm's effective orders lagged 2 is not zero
-		v[4]=v[1]*(1+v[3]*v[6]);              //expected sales will be the effective orders in the last period multiplied by the growth rate between the two periods adjusted by the expectations parameter
-	else                                                  	//if firm's effective orders lagged 2 is zero 
-		v[4]=v[1];                                          //expected sales will be equal to effective orders of the last period
-		
+	if(v[0]==1)                                             //if it is the energy sector
+		v[4]=0;                                             //prior expected demand is zero
+	else                                                    //if it is not the energy sector
+		{
+		if(v[2]!=0)                                         //if firm's effective orders lagged 2 is not zero
+			v[4]=v[1]*(1+v[3]*v[6]);                        //expected sales will be the effective orders in the last period multiplied by the growth rate between the two periods adjusted by the expectations parameter
+		else                                                //if firm's effective orders lagged 2 is zero 
+			v[4]=v[1];                                      //expected sales will be equal to effective orders of the last period
+		}	
 RESULT(max(0,v[4]))
 
 
@@ -114,28 +119,28 @@ EQUATION("Firm_Expected_Demand")
 Firm's expected sales are calculated from an average of effective sales from the two previous periods, applying a expected growth rate. This expected growth rate is obtained from comparing the average of the two previous periods with the average of the two before that, adjusted by an expectation parameter.
 */
 	v[0]=V("Firm_Prior_Expected_Demand");
-	//v[2]=v[0];
-	v[1]=V("id_energy_sector");
-	if(v[1]==1)                                           	//if it is the energy sector
-		v[2]=v[0]+5;                                           
+	v[1]=V("Energy_Demand_Before_Energy_Sector");
+	v[2]=V("Energy_Sector_Own_Demand");
+	v[3]=V("id_energy_sector");
+	if(v[3]==1)                                           	//if it is the energy sector
+		v[4]=v[1]+v[2];                                           
 	else                                                  	//if it is not the energy sector
-		v[2]=v[0];                                          //Firm's expected demand is equal to the prior
-		
-RESULT(v[2])
+		v[4]=v[0];                                          //Firm's expected demand is equal to the prior		
+RESULT(v[4])
 
 
 EQUATION("Firm_Planned_Production")
 /*
 */
 	v[0]=V("Firm_Prior_Planned_Production");
-	//v[2]=v[0];
-	v[1]=V("id_energy_sector");
-	if(v[1]==1)                                           	//if it is the energy sector
-		v[2]=v[0]+10;                                           
+	v[1]=V("Energy_Demand_Before_Energy_Sector");
+	v[2]=V("Energy_Sector_Own_Demand");
+	v[3]=V("id_energy_sector");
+	if(v[3]==1)                                           	//if it is the energy sector
+		v[4]=v[1]+v[2];                                           
 	else                                                  	//if it is not the energy sector
-		v[2]=v[0];                                          //Firm's planned production is equal to the prior
-	
-RESULT(v[2])
+		v[4]=v[0];                                          //Firm's expected demand is equal to the prior
+RESULT(v[4])
 
 
 EQUATION("Firm_Effective_Production")
@@ -237,8 +242,6 @@ CYCLE(cur, "CAPITALS")
 v[3]=VL("Firm_Avg_Input_Tech_Coefficient",1);
 v[4]=v[1]!=0? v[0]/v[1]: v[3];
 RESULT(v[4])
-
-
 
 
 EQUATION("Firm_Avg_Carbon_Intensity")
