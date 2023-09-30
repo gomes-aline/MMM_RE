@@ -49,7 +49,7 @@ RESULT(v[9])
 
 
 EQUATION("Firm_Max_Production_Constrained_By_Capacity")
-/* AJUSTAR!!! firm's maximium production possible constrained by the installed productive capacity 
+/* Firm's maximium production possible constrained by the installed productive capacity 
 */
 	v[0]=VL("Firm_Productive_Capacity",1);                 //firm's productive capacity last period	
 	if(v[0]>0)                                            //if firm's productive capacity is higher than zero
@@ -72,7 +72,8 @@ RESULT(v[2])
 
 
 EQUATION("Firm_Max_Production_Constrained_By_Energy")
-/* AJUSTAR!!! firm's maximium production possible constrained by the amount of inputs available
+/* AJUSTAR COM REGRA DE RACIOAMENTO DE ENERGIA!!! 
+firm's maximium production possible constrained by the amount of inputs available
 */
 	v[0]=VL("Firm_Avg_Input_Tech_Coefficient",1);         //firm's average input tech coefficient last period
 	v[1]=VL("Firm_Stock_Inputs",1);                   	  //stock of remaining imputs from the last period	
