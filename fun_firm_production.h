@@ -51,21 +51,12 @@ RESULT(v[9])
 EQUATION("Firm_Max_Production_Constrained_By_Capacity")
 /* AJUSTAR!!! firm's maximium production possible constrained by the installed productive capacity 
 */
-/*	
-	v[0]=v[1]=VL("Firm_Productive_Capacity",1)            //firm's productive capacity last period	
+	v[0]=VL("Firm_Productive_Capacity",1);                 //firm's productive capacity last period	
 	if(v[0]>0)                                            //if firm's productive capacity is higher than zero
-		v[2]=v[0];                                        //firm's maximium production constrained by installed productive capacity
+		v[1]=v[0];                                        //firm's maximium production constrained by installed productive capacity
 	else                                                  //if firm's productive capacity is zero or negative 
-		v[2]=0;                                           //firm's max production is zero    
-RESULT(v[2])
-*/
-	v[0]=VL("Firm_Avg_Input_Tech_Coefficient",1);         //firm's average input tech coefficient last period
-	v[1]=VL("Firm_Stock_Inputs",1);                   	  //stock of remaining imputs from the last period	
-	if(v[0]>0)                                            //if the input tech coefficient is higher than zero
-		v[2]=v[1]/v[0];                                   //firm's maximium production constrained by available inputs 
-	else                                                  //if the input tech coefficient is zero or negative 
-		v[2]=1000000000;                                  //firm's production is not constrained by this input    
-RESULT(v[2])
+		v[1]=0;                                           //firm's max production is zero    
+RESULT(v[1])
 
 
 EQUATION("Firm_Max_Production_Constrained_By_Inputs")
@@ -100,7 +91,7 @@ EQUATION("Firm_Prior_Effective_Production")
 	v[2]=V("Firm_Max_Production_Constrained_By_Inputs");
 	v[3]=V("Firm_Max_Production_Constrained_By_Energy");
 	v[4]=V("id_energy_sector");
-	if(v[4]==1)                                           	//if it is the energy sector
+	if(v[4]==1)                                           	//if it is the energy sector AJUSTAR!!!
 		{
 		v[5]= min(v[0],v[1]);                               //Firm's (prior) effective production is the lowest between planned production and the max productions constrained by capacity and inputs		
 		v[6]= min(v[2],v[3]);
