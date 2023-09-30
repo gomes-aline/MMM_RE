@@ -83,6 +83,15 @@ The stock of inputs of each firm at the end of the period is calculated by summi
 RESULT(v[10])
 
 
+EQUATION("Firm_Prior_Energy_Demand")
+/* Firm's energy demand used in (prior) effective production
+*/
+	v[1]=V("Firm_Prior_Effective_Production");
+	v[0]=VL("Firm_Avg_Energy_Intensity",1);
+	v[2]=v[1]*v[0];
+RESULT(v[2])
+
+
 EQUATION("Firm_Energy_Demand")
 /*
 */
@@ -91,7 +100,4 @@ EQUATION("Firm_Energy_Demand")
 	v[0]=VL("Firm_Avg_Energy_Intensity",1);
 	v[2]=v[1]*v[0];
 RESULT(v[2])
-
-
-
 

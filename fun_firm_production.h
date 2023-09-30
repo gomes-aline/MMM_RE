@@ -197,7 +197,6 @@ v[4]=v[1]!=0? v[0]/v[1]: v[3];
 RESULT(v[4])
 
 
-
 EQUATION("Firm_Avg_Productivity")
 /*
 Firm's productivity will be an average of each capital good productivity weighted by their repective production	

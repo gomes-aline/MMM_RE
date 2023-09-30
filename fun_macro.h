@@ -115,6 +115,24 @@ Must be called by the sectors.
 RESULT(v[7])
 
 
+EQUATION("Country_Prior_Domestic_Energy_Demand")
+/*
+
+*/
+	v[1]=0;                                                 			//initializes the CYCLE
+	CYCLE(cur, "SECTORS")                                   			//CYCLE trought the sectors
+		v[1]=v[1]+SUMS(cur, "Firm_Prior_Energy_Demand");
+	v[4]=VS(energy, "Sector_Avg_Price");
+	v[5]=V("Government_Effective_Energy");
+	v[6]= v[4]!=0? v[5]/v[4] : 0;
+	
+	v[8]=0;                                                 			//initializes the CYCLE
+	CYCLE(cur, "CLASSES")                                   			//CYCLE trought the sectors
+		v[8]=v[8]+SUMS(cur, "Class_Real_Energy_Demand");
+	v[7]=v[1]+v[6]+v[8];
+RESULT(v[7])
+
+
 EQUATION("Country_Domestic_Energy_Demand")
 /*
 

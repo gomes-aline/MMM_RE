@@ -443,6 +443,7 @@ Label Root
 				Var: Firm_Max_Production_Constrained_By_Capacity
 				Var: Firm_Max_Production_Constrained_By_Energy
 				Var: Firm_Prior_Effective_Production
+				Var: Firm_Prior_Energy_Demand
 
 			}
 
@@ -840,6 +841,7 @@ Label Root
 		Var: Country_Energy_Intensity
 		Var: Country_Emissions
 		Var: Country_Carbon_Intensity
+		Var: Country_Prior_Domestic_Energy_Demand
 
 	}
 
@@ -942,6 +944,7 @@ Var: Country_Nominal_Energy_Production 0 s + n n
 Var: Country_Energy_Intensity 1 s + n n	0
 Var: Country_Emissions 1 s + n n	0
 Var: Country_Carbon_Intensity 1 s + n n	0
+Var: Country_Prior_Domestic_Energy_Demand 0 s + n n
 
 Object: CLASSES C	4
 Param: class_autonomous_consumption_adjustment 0 n + n n	1	1	1	1
@@ -1461,6 +1464,7 @@ Var: Firm_Max_Production_Constrained_By_Inputs 0 s + n n
 Var: Firm_Max_Production_Constrained_By_Capacity 0 s + n n
 Var: Firm_Max_Production_Constrained_By_Energy 0 s + n n
 Var: Firm_Prior_Effective_Production 0 s + n n
+Var: Firm_Prior_Energy_Demand 0 s + n n
 
 Object: CAPITALS C	1	1	1	1
 Param: capital_good_date_birth 0 n + n n	-59	-59	-59	-59
@@ -2012,6 +2016,10 @@ Variable_Country_Emissions
 END_DESCRIPTION
 
 Variable_Country_Carbon_Intensity
+
+END_DESCRIPTION
+
+Variable_Country_Prior_Domestic_Energy_Demand
 
 END_DESCRIPTION
 
@@ -4077,6 +4085,10 @@ END_DESCRIPTION
 
 Variable_Firm_Prior_Effective_Production
 Firm's (prior) effective production used to calculate the energy demand at current time.
+END_DESCRIPTION
+
+Variable_Firm_Prior_Energy_Demand
+Firm's energy demand used in (prior) effective production
 END_DESCRIPTION
 
 Object_CAPITALS
