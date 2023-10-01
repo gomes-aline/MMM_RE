@@ -52,17 +52,29 @@ Unitary costs of the inputs. It's given by the domestic input price plus the ext
 RESULT(v[8])
 
 
+EQUATION("Firm_Energy_Cost")
+/*
+Unitary costs of energy. It's given by the domestic input price plus the external input price, weighted by the proportion of the demand met by domestic and external sectors
+*/
+	v[0]=VL("Sector_Propensity_Import_Energy",1);
+	v[1]=VLS(energy,"Sector_Avg_Price",1);                 //intermediate sector average price
+	v[2]=VLS(energy,"Sector_External_Price",1);            //sector external price
+	v[3]=VL("Firm_Avg_Energy_Intensity",1);                //firm's energy efficiency last period
+	v[5]=V("Country_Exchange_Rate");                       //exchange rate
+	v[8]=v[1]*v[3]*(1-v[0])+v[3]*v[0]*v[2]*v[5];     	   //input cost will be the amount demanded domesticaly multiplied by domestic price plus the amount demanded externally miltiplied by the external price
+RESULT(v[8])
+
+
 EQUATION("Firm_Variable_Cost")
 /*
 Variable unit cost is the wage cost (nominal wages over productivity) plus intermediate costs (inputs and energy)
 */
 	v[0]=V("Firm_Input_Cost");
-	v[1]=V("Firm_Wage");
-	v[2]=VL("Firm_Avg_Productivity",1);
-	v[4]=V("sector_energy_intensity");
-	v[5]=VLS(energy,"Sector_Avg_Price",1); 
-	v[3]= v[2]!=0? (v[1]/v[2])+v[0]+v[4]*v[5] : v[0];
-RESULT(v[3])
+	v[1]=V("Firm_Energy_Cost");
+	v[2]=V("Firm_Wage");
+	v[3]=VL("Firm_Avg_Productivity",1);
+	v[4]= v[3]!=0? (v[2]/v[3])+v[0]+v[1] : v[0]+v[1];
+RESULT(v[4])
 
 
 EQUATION("Firm_Unit_Financial_Cost")

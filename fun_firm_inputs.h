@@ -27,6 +27,13 @@ EQUATION("Sector_Propensity_Import_Inputs")
 RESULT(v[8])
 
 
+EQUATION("Sector_Propensity_Import_Energy")
+/* Sector propensity to import energy is initially fixed. 
+*/
+	v[1]=V("sector_initial_propensity_import_energy");			    //firm propensity to import energy
+RESULT(v[1])
+
+
 EQUATION("Firm_Input_Demand_Next_Period")
 /*
 The demand for inputs of each sector of intermediate goods, which should be produced during current period and to be used in the next period, is calculated based on the necessity of programed production, in which a expected growth rate is applied and the remaing stock is discounted. 

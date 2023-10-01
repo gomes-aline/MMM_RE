@@ -444,6 +444,7 @@ Label Root
 				Var: Firm_Max_Production_Constrained_By_Energy
 				Var: Firm_Prior_Effective_Production
 				Var: Firm_Prior_Energy_Demand
+				Var: Firm_Energy_Cost
 
 			}
 
@@ -591,6 +592,8 @@ Label Root
 			Var: Energy_Demand_Before_Energy_Sector
 			Var: Energy_Sector_Own_Demand
 			Param: energy_sector_markup
+			Var: Sector_Propensity_Import_Energy
+			Param: sector_initial_propensity_import_energy
 
 		}
 
@@ -1349,6 +1352,8 @@ Param: switch_capital_order 0 n + n n	0	0	0	0
 Var: Energy_Demand_Before_Energy_Sector 0 s + n n
 Var: Energy_Sector_Own_Demand 0 s + n n
 Param: energy_sector_markup 0 s + n n	1.5	1.5	1.5	1.5
+Var: Sector_Propensity_Import_Energy 1 s + n n	0.05	0.05	0.05	0.05
+Param: sector_initial_propensity_import_energy 0 s + n n	0.05	0.05	0.05	0.05
 
 Object: FIRMS C	1	1	1	1
 Param: firm_bank 0 n + n n	0	0	0	0
@@ -1471,6 +1476,7 @@ Var: Firm_Max_Production_Constrained_By_Capacity 0 s + n n
 Var: Firm_Max_Production_Constrained_By_Energy 0 s + n n
 Var: Firm_Prior_Effective_Production 0 s + n n
 Var: Firm_Prior_Energy_Demand 0 s + n n
+Var: Firm_Energy_Cost 0 s + n n
 
 Object: CAPITALS C	1	1	1	1
 Param: capital_good_date_birth 0 n + n n	-59	-59	-59	-59
@@ -3625,6 +3631,18 @@ _INIT_
 All 4 instances equal to 1.5
 END_DESCRIPTION
 
+Variable_Sector_Propensity_Import_Energy
+Sector propensity to import energy is initially fixed.
+_INIT_
+All 4 instances equal to 0.05
+END_DESCRIPTION
+
+Parameter_sector_initial_propensity_import_energy
+
+_INIT_
+All 4 instances equal to 0.05
+END_DESCRIPTION
+
 Object_FIRMS
 
 END_DESCRIPTION
@@ -4109,6 +4127,10 @@ END_DESCRIPTION
 
 Variable_Firm_Prior_Energy_Demand
 Firm's energy demand used in (prior) effective production
+END_DESCRIPTION
+
+Variable_Firm_Energy_Cost
+Unitary costs of energy. It's given by the domestic input price plus the external input price, weighted by the proportion of the demand met by domestic and external sectors
 END_DESCRIPTION
 
 Object_CAPITALS
